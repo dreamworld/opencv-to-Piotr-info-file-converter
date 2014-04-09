@@ -14,16 +14,16 @@ USAGE
 
 fileIn = open('tmp/infos.dat', 'r')
 
-outStr = ''
 for eachLine in fileIn:
     inList = eachLine.split()
     outList=['person', '0', '0', inList[4], inList[5],\
     '0', '0', '0', '0', '0', '0', '0']
     outLine=' '.join(outList)    
-    outStr+=outLine+'\n'
+    outStr='% bbGt version=3\n' + outLine + '\n'
+    fn=inList[0].replace('.tif','')
+    fileOut = open(''.join(['output/', fn,'.txt']),'w')
+    fileOut.write(outStr)
+    fileOut.close()
 
 fileIn.close()
-print outStr
-fileOut = open('tmp/abc.txt','w')
-fileOut.write(outStr)
-fileOut.close()
+#print outStr
